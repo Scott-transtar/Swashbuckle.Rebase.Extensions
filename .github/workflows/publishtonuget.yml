@@ -8,11 +8,16 @@ jobs:
     name: publish to nuget
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
         
       # Publish
       - name: Publish NuGet
-        uses: rohith/publish-nuget@v1.2.0
+        uses: rohith/publish-nuget@v2.0.0
         with:
            project_dir: Swashbuckle.Rebase.Extensions
            tag_format: v*
